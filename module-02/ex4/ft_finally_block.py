@@ -1,33 +1,35 @@
-def water_plants(plant_list):
-    print("Opening watering system")
+class GardenError(Exception):
+    def __init__(self, message: str = "Unknown garden error"):
+        super().__init__(message)
+
+
+class PlantError(GardenError):
+    def __init__(self, message: str = "Unknown plant error"):
+        super().__init__(message)
+
+
+def water_plant(plant_name: str) -> None:
+    if plant_name != plant_name.capitalize():
+        raise PlantError(f"Invalid plant name to water: '{plant_name}'")
+    print(f"Watering {plant_name}: [OK]")
+
+
+def test_watering_system(plants: list, label: str) -> None:
+    print(f"Testing {label}...")
     try:
-        for plant in plant_list:
-            if not isinstance(plant, str):
-                raise ValueError(f"Cannot water {plant} - invalid plant!")
-            print(f"Watering {plant}")
-    except ValueError as e:
-        print(f"Error: {e}")
-        raise
+        print("Opening watering system")
+        for plant in plants:
+            water_plant(plant)
+    except PlantError as e:
+        print(f"Caught PlantError: {e}")
+        print(".. ending tests and returning to main")
+        return
     finally:
-        print("Closing watering system (cleanup)")
+        print("Closing watering system")
 
 
-def test_watering_system():
-    print("=== Garden Watering System ===\n")
-
-    print("Testing normal watering...")
-    try:
-        water_plants(["tomato", "lettuce", "carrots"])
-        print("Watering completed successfully!\n")
-    except Exception:
-        pass
-
-    print("Testing with error...")
-    try:
-        water_plants(["tomato", None, "carrots"])
-    except Exception:
-        print("\nCleanup always happens, even with errors!")
-
-
-if __name__ == "__main__":
-    test_watering_system()
+def main() -> None:
+    print("=== Garden Watering System ===")
+    test_watering_system(["Tomato", "Lettuce", "Carrots"], "valid plants")
+    test_watering_system(["Tomato", "lettuce", "Carrots"], "invalid plants")
+    print("Cleanup always happens, even with errors")
