@@ -1,12 +1,13 @@
 class Plant:
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: float, age: int):
         self.name = name
-        self.height = height
+        self.height = float(height)
         self.age = age
 
-    def __str__(self) -> str:
-        return f"{self.name} ({self.height}cm, {self.age} days)"
+    def show(self) -> None:
+        print(f"{self.name}: {self.height}cm, {self.age} days old")
 
+    @staticmethod
     def create_plants(info: list[tuple[str, int, int]]) -> list["Plant"]:
         plants = []
         for name, height, age in info:
@@ -25,9 +26,8 @@ def main():
     plants = Plant.create_plants(plant_info)
     print("=== Plant Factory Output ===")
     for p in plants:
-        print(f"Created: {p}")
-    print("Object-Oriented Garden Systems")
-    print(f"\nTotal plants created: {len(plants)}")
+        print("Created: ", end="")
+        p.show()
 
 
 if __name__ == "__main__":

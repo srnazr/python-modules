@@ -1,42 +1,42 @@
 class SecurePlant:
     def __init__(self):
-        self.name = ""
-        self.height = 0
-        self.age = 0
+        self._name = ""
+        self._height = 15
+        self._age = 10
 
     def set_name(self, name: str):
-        self.name = name
-        print(f"Plant created: {self.name}")
+        self._name = name
+        print(f"Plant created: {self._name}: "
+              f"{float(self._height)}cm, {self._age} days old")
 
     def set_height(self, height: int):
         if height < 0:
-            self.print_error("height", height, "cm")
+            print(f"{self._name}: Error, height can't be negative")
+            print("Height update rejected")
             return
-        self.height = height
-        print(f"Height updated: {self.height}cm [OK]")
+        self._height = height
+        print(f"Height updated: {self._height}cm")
 
     def set_age(self, age: int):
         if age < 0:
-            self.print_error("age", age, "day(s)")
+            print(f"{self._name}: Error, age can't be negative")
+            print("Age update rejected")
             return
-        self.age = age
-        print(f"Age updated: {self.age} day(s) [OK]")
+        self._age = age
+        print(f"Age updated: {self._age} days")
 
     def get_name(self) -> str:
-        return self.name
+        return self._name
 
     def get_height(self) -> int:
-        return self.height
+        return self._height
 
     def get_age(self) -> int:
-        return self.age
+        return self._age
 
     def __str__(self):
-        return f"Current plant: {self.name} ({self.height}cm, {self.age}days)"
-
-    def print_error(self, att: str, val: int, unit: str) -> None:
-        print(f"\nInvalid operation attempted: {att} {val}{unit} [REJECTED]")
-        print(f"Security: Negative {att} rejected\n")
+        return (f"Current state: {self._name}: "
+                f"{float(self._height)}cm, {self._age} days old")
 
 
 def main():
@@ -47,8 +47,9 @@ def main():
     rose.set_age(30)
 
     rose.set_height(-5)
+    rose.set_age(-3)
 
-    print(rose.__str__())
+    print(rose)
 
 
 if __name__ == "__main__":
