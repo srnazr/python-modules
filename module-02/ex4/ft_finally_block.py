@@ -33,3 +33,7 @@ def main() -> None:
     test_watering_system(["Tomato", "Lettuce", "Carrots"], "valid plants")
     test_watering_system(["Tomato", "lettuce", "Carrots"], "invalid plants")
     print("Cleanup always happens, even with errors")
+
+
+if __name__ == "__main__":
+    main()
