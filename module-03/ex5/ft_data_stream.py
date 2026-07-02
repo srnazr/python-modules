@@ -3,7 +3,8 @@ import typing
 
 
 PLAYERS = ["alice", "bob", "charlie", "dylan"]
-ACTIONS = ["run", "eat", "sleep", "grab", "move", "climb", "swim", "use", "release"]
+ACTIONS = ["run", "eat", "sleep", "grab", "move",
+           "climb", "swim", "use", "release"]
 
 
 def gen_event() -> typing.Generator:

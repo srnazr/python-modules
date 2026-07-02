@@ -1,7 +1,8 @@
 import random
 
 
-PLAYERS = ['Alice', 'bob', 'Charlie', 'dylan', 'Emma', 'Gregory', 'john', 'kevin', 'Liam']
+PLAYERS = ['Alice', 'bob', 'Charlie', 'dylan', 'Emma',
+           'Gregory', 'john', 'kevin', 'Liam']
 
 
 def main() -> None:
@@ -21,7 +22,8 @@ def main() -> None:
     average = round(sum(scores.values()) / len(scores), 2)
     print(f"Score average is {average}")
 
-    high_scores = {name: score for name, score in scores.items() if score > average}
+    high_scores = {name: score for name, score in
+                   scores.items() if score > average}
     print(f"High scores: {high_scores}")
 
 

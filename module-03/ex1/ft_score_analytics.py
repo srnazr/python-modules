@@ -16,7 +16,8 @@ if len(sys.argv) > 1:
         print("Low score:", min(scores))
         print("Score range:", max(scores) - min(scores))
     else:
-        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ... ")
+        print("No scores provided. Usage: python3 ft_score_analytics.py "
+              "<score1> <score2> ... ")
 else:
-    print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ... ")
-
+    print("No scores provided. Usage: python3 ft_score_analytics.py"
+          " <score1> <score2> ... ")

@@ -1,9 +1,10 @@
 import math
 
+
 def ft_get_player_coord() -> tuple[float, float, float]:
     while True:
         coords = input("Enter new coordinates as floats in format 'x,y,z': ")
-        sep  = coords.split(",")
+        sep = coords.split(",")
         if len(sep) != 3:
             print("Invalid syntax")
             continue
@@ -15,6 +16,7 @@ def ft_get_player_coord() -> tuple[float, float, float]:
         except ValueError as e:
             param = str(e).split("'")[1]
             print(f"Error on parameter '{param}': {e}")
+
 
 def main() -> None:
     print("=== Game Coordinate System ===")
