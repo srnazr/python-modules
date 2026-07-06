@@ -7,7 +7,7 @@ if len(sys.argv) > 1:
         try:
             scores.append(int(sys.argv[score]))
         except ValueError:
-            print(f"Invalid parameter: \'{sys.argv[score]}\'")
+            print(f"Invalid parameter: '{sys.argv[score]}'")
     if len(scores) > 0:
         print("Scores processed:", scores)
         print("Total players:", len(scores))

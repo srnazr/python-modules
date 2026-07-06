@@ -9,3 +9,7 @@ if len(sys.argv) > 1:
 else:
     print("No arguments provided!")
 print("Total arguments: ", len(sys.argv))
+
+# alternate ways to skip name:
+# program_name, *args = sys.argv --> program_name = sys.argv[0], args = rest
+# args = sys.argv[1:] --> args = everything except sys.argv[0]

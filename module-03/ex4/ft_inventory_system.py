@@ -39,12 +39,8 @@ def main() -> None:
         percentage = round(quantity / total * 100, 1)
         print(f"Item {item} represents {percentage}%")
 
-    most = max(inventory, key=lambda k: list(dict.keys(inventory)).index(k)
-               if list(dict.values(inventory)).count(inventory[k]) > 1
-               else -inventory[k])
-    least = min(inventory, key=lambda k: -list(dict.keys(inventory)).index(k)
-                if list(dict.values(inventory)).count(inventory[k]) > 1
-                else inventory[k])
+    most = max(inventory, key=inventory.get)
+    least = min(inventory, key=inventory.get)
 
     print(f"Item most abundant: {most} with quantity {inventory[most]}")
     print(f"Item least abundant: {least} with quantity {inventory[least]}")
