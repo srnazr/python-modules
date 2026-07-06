@@ -1,8 +1,8 @@
 import sys
 
 
-def ft_get_inventory(args: list) -> dict:
-    inventory = {}
+def ft_get_inventory(args: list) -> dict[str, int]:
+    inventory: dict[str, int] = {}
     for param in args:
         if ":" not in param or param.count(":") != 1:
             print(f"Error - invalid parameter '{param}'")
@@ -39,8 +39,11 @@ def main() -> None:
         percentage = round(quantity / total * 100, 1)
         print(f"Item {item} represents {percentage}%")
 
-    most = max(inventory, key=inventory.get)
-    least = min(inventory, key=inventory.get)
+    def get_quantity(item: str) -> int:
+        return inventory[item]
+
+    most = max(inventory, key=get_quantity)
+    least = min(inventory, key=get_quantity)
 
     print(f"Item most abundant: {most} with quantity {inventory[most]}")
     print(f"Item least abundant: {least} with quantity {inventory[least]}")
