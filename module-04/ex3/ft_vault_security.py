@@ -13,6 +13,7 @@ def secure_archive(filename, action="read", content=""):
     except Exception as e:
         return (False, str(e))
 
+
 def main():
     print("=== Cyber Archives Security ===")
 
