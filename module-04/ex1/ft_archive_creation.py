@@ -1,11 +1,12 @@
 import typing
 import sys
 
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: ft_archive_creation.py <filename>")
         return
-    
+
     filename = sys.argv[1]
 
     print("=== Cyber Archives Recovery & Creation ===")
@@ -16,7 +17,7 @@ def main():
     except Exception as e:
         print(f"Error opening file '{filename}': {e}")
         return
-    
+
     try:
         content = file.read()
         print("---\n")
@@ -24,14 +25,14 @@ def main():
         print("\n---")
     finally:
         file.close()
-        print(f"File '{filename}' closed")
-    
+        print(f"File '{filename}' closed.\n")
+
     print("Transform data:")
     lines = content.splitlines()
     new_content = ""
     for line in lines:
         new_content += line + "#\n"
-    
+
     print("---\n")
     print(new_content)
     print("---")
@@ -41,7 +42,7 @@ def main():
     if new_filename == "":
         print("Not saving data.")
         return
-    
+
     print(f"Saving data to '{new_filename}'")
 
     try:
@@ -49,15 +50,14 @@ def main():
     except Exception as e:
         print(f"Error opening file '{new_filename}': {e}")
         return
-    
+
     try:
         out_file.write(new_content)
     finally:
         out_file.close()
-    
+
     print(f"Data saved in file '{new_filename}'")
 
 
 if __name__ == "__main__":
     main()
-    
