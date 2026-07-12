@@ -1,6 +1,7 @@
 import sys
 import typing
 
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: ft_stream_management.py <filename>")
@@ -14,7 +15,8 @@ def main():
     try:
         file: typing.IO = open(filename, "r")
     except Exception as e:
-        print(f"[STDERR] Error opening file '{filename}': {e}", file=sys.stderr)
+        print(f"[STDERR] Error opening file '{filename}': {e}",
+              file=sys.stderr)
         return
 
     try:
@@ -24,7 +26,7 @@ def main():
         print("---")
     finally:
         file.close()
-        print(f"File '{filename}' closed.")
+        print(f"File '{filename}' closed.\n")
 
     print("Transform data:")
     lines = content.splitlines()
@@ -49,7 +51,8 @@ def main():
     try:
         out_file: typing.IO = open(new_filename, "w")
     except Exception as e:
-        print(f"[STDERR] Error opening file '{new_filename}': {e}", file=sys.stderr)
+        print(f"[STDERR] Error opening file '{new_filename}': {e}",
+              file=sys.stderr)
         return
 
     try:
@@ -58,6 +61,7 @@ def main():
         out_file.close()
 
     print(f"Data saved in file '{new_filename}'.")
+
 
 if __name__ == "__main__":
     main()
