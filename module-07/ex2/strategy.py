@@ -17,9 +17,9 @@ class BattleStrategy(ABC):
         pass
 
     def check_valid(self, creature):
-        if self.is_valid(creature) == False:
+        if not self.is_valid(creature):
             message = (f"Invalid Creature '{creature._name}' for this"
-                       f"{self.strategy_name} strategy" )
+                       f"{self.strategy_name} strategy")
             raise InvalidStrategyError(message)
 
 
@@ -30,7 +30,7 @@ class NormalStrategy(BattleStrategy):
         if isinstance(creature, Creature):
             return True
         return False
-    
+
     def act(self, creature):
         self.check_valid(creature)
         print(creature.attack())
@@ -44,7 +44,7 @@ class AggressiveStrategy(BattleStrategy):
         if isinstance(creature, TransformCapability):
             return True
         return False
-    
+
     def act(self, creature):
         self.check_valid(creature)
         print(creature.transform())
@@ -60,7 +60,7 @@ class DefensiveStrategy(BattleStrategy):
         if isinstance(creature, HealCapability):
             return True
         return False
-    
+
     def act(self, creature):
         self.check_valid(creature)
         print(creature.attack())
