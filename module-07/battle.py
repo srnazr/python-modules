@@ -1,5 +1,6 @@
 import ex0
 
+
 def main():
     print("Testing factory")
     flameling = ex0.FlameFactory().create_base()
