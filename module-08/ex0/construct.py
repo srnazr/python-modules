@@ -51,8 +51,10 @@ def print_inside_matrix():
             site_packages_path = packages_list[0]
 
     if site_packages_path == "":
-        python_version = "python" + str(sys.version_info.major) + "." + str(sys.version_info.minor)
-        site_packages_path = os.path.join(env_path, "lib", python_version, "site-packages")
+        python_version = (f"python{sys.version_info.major}."
+                          f"{sys.version_info.minor}")
+        site_packages_path = os.path.join(env_path, "lib",
+                                          python_version, "site-packages")
 
     print("Package installation path: " + site_packages_path)
 
@@ -61,7 +63,7 @@ def main():
     print("Welcome to the Real World of Data Engineering")
     print("")
 
-    if is_venv() == True:
+    if is_venv():
         print_inside_matrix()
     else:
         print_outside_matrix()

@@ -32,7 +32,7 @@ def check_dependencies():
         is_available, version = check_one_package(package_name)
         results[package_name] = is_available
 
-        if is_available == True:
+        if is_available:
             status_line = "[OK] " + package_name
             status_line = status_line + " (" + version + ")"
             status_line = status_line + "- " + descriptions[package_name]
@@ -118,14 +118,14 @@ def main():
     results = check_dependencies()
 
     core_ready = True
-    if results["pandas"] == False:
+    if not results["pandas"]:
         core_ready = False
-    if results["numpy"] == False:
+    if not results["numpy"]:
         core_ready = False
-    if results["matplotlib"] == False:
+    if not results["matplotlib"]:
         core_ready = False
 
-    if core_ready == False:
+    if not core_ready:
         print_missing_instructions()
         sys.exit(1)
 

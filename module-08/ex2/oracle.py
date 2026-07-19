@@ -1,5 +1,4 @@
 import os
-import sys
 from dotenv import load_dotenv
 
 
@@ -31,15 +30,15 @@ def show_configuration():
         "ZION_ENDPOINT", "http://localhost:8080"
     )
 
-    if mode_found == False:
+    if not mode_found:
         print_missing_warning("MATRIX_MODE")
-    if db_found == False:
+    if not db_found:
         print_missing_warning("DATABASE_URL")
-    if api_found == False:
+    if not api_found:
         print_missing_warning("API_KEY")
-    if log_found == False:
+    if not log_found:
         print_missing_warning("LOG_LEVEL")
-    if zion_found == False:
+    if not zion_found:
         print_missing_warning("ZION_ENDPOINT")
 
     print("")
@@ -80,7 +79,7 @@ def security_check(config):
     if config["api_key"] == "secret123" or config["api_key"] == "changeme":
         hardcoded_secret_found = True
 
-    if hardcoded_secret_found == False:
+    if not hardcoded_secret_found:
         print("[OK] No hardcoded secrets detected")
     else:
         print("[WARNING] Looks like a placeholder secret is being used")
